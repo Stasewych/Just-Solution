@@ -1,0 +1,2007 @@
+<!-- Block 1 -->
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Solution - Hero Block</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+        }
+        
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .hero-text {
+            z-index: 2;
+        }
+        
+        .hero-headline {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .hero-subheadline {
+            font-size: 18px;
+            color: #4a5568;
+            margin-bottom: 32px;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease-out 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        .hero-description {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s ease-out 0.4s;
+            animation-fill-mode: both;
+        }
+        
+        .hero-description strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+        
+        .value-points {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out 0.6s;
+            animation-fill-mode: both;
+        }
+        
+        .value-point {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .value-icon {
+            width: 24px;
+            height: 24px;
+            background: #2563eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .value-icon svg {
+            width: 14px;
+            height: 14px;
+            stroke: white;
+            stroke-width: 3;
+        }
+        
+        .value-text {
+            font-size: 16px;
+            color: #4a5568;
+        }
+        
+        .value-text strong {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            animation: fadeInUp 0.8s ease-out 0.8s;
+            animation-fill-mode: both;
+        }
+        
+        .btn {
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+        }
+        
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #2563eb;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .btn-secondary:hover {
+            border-color: #2563eb;
+            background: #f9fafb;
+        }
+        
+        .hero-visual {
+            position: relative;
+            animation: fadeIn 1s ease-out 1s;
+            animation-fill-mode: both;
+        }
+        
+        .visual-placeholder {
+            width: 100%;
+            height: 500px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .automation-demo {
+            width: 80%;
+            height: 80%;
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 24px;
+            position: relative;
+        }
+        
+        .demo-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .demo-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e5e7eb;
+        }
+        
+        .demo-dot:first-child { background: #ef4444; }
+        .demo-dot:nth-child(2) { background: #f59e0b; }
+        .demo-dot:nth-child(3) { background: #10b981; }
+        
+        .demo-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .demo-line {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .demo-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            height: 100%;
+            width: 100%;
+            background: #2563eb;
+            animation: autoFill 3s ease-in-out infinite;
+        }
+        
+        .demo-line:nth-child(2)::after { animation-delay: 0.5s; }
+        .demo-line:nth-child(3)::after { animation-delay: 1s; }
+        .demo-line:nth-child(4)::after { animation-delay: 1.5s; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes autoFill {
+            0%, 100% { left: -100%; }
+            50% { left: 0; }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-headline {
+                font-size: 36px;
+            }
+            
+            .hero-subheadline {
+                font-size: 16px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .visual-placeholder {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-headline">
+                        Автоматизуйте рутинну юридичну роботу за кілька кліків
+                    </h1>
+                    
+                    <p class="hero-subheadline">
+                        Just Solution допомагає юристам, нотаріусам, приватним виконавцям та юридичним компаніям 
+                        економити години щоденної роботи з реєстрами, документами та платежами. 
+                        Просте, швидке та надійне рішення.
+                    </p>
+                    
+                    <p class="hero-description">
+                        Кожен день Ви витрачаєте години на повторювані завдання: створення та заповнення документів, 
+                        кліки в держреєстрах, обчислення судових зборів та підготовку паперів.<br><br>
+                        <strong>Just Solution</strong> — це набір інструментів, які роблять ці завдання автоматично. 
+                        Наші продукти дозволяють економити час, мінімізувати помилки та підвищувати продуктивність вашої команди.
+                    </p>
+                    
+                    <div class="value-points">
+                        <div class="value-point">
+                            <div class="value-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <span class="value-text"><strong>Швидко:</strong> сотні повторюваних дій виконуються автоматично</span>
+                        </div>
+                        
+                        <div class="value-point">
+                            <div class="value-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <span class="value-text"><strong>Точно:</strong> 99,8% точність, відсутність помилок у документах і платежах, реєстрах</span>
+                        </div>
+                        
+                        <div class="value-point">
+                            <div class="value-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <span class="value-text"><strong>Гнучко:</strong> налаштовуйте власні сценарії для будь-яких процесів</span>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary">Спробувати безкоштовно</button>
+                        <button class="btn btn-secondary">Замовити демо</button>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="visual-placeholder">
+                        <div class="automation-demo">
+                            <div class="demo-header">
+                                <div class="demo-dot"></div>
+                                <div class="demo-dot"></div>
+                                <div class="demo-dot"></div>
+                            </div>
+                            <div class="demo-content">
+                                <div class="demo-line"></div>
+                                <div class="demo-line" style="width: 85%;"></div>
+                                <div class="demo-line" style="width: 70%;"></div>
+                                <div class="demo-line" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+<!-- Block 2 -->
+
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Solution - Products Block</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f9fafb;
+        }
+        
+        .products-section {
+            padding: 80px 20px;
+            background: #ffffff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .products-container {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+        
+        .product-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .product-info {
+            padding: 40px;
+        }
+        
+        .product-icon {
+            width: 60px;
+            height: 60px;
+            background: #eff6ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        
+        .product-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: #2563eb;
+            stroke-width: 2;
+        }
+        
+        .product-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+        }
+        
+        .product-description {
+            font-size: 18px;
+            color: #6b7280;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        
+        .product-flow {
+            margin-bottom: 32px;
+        }
+        
+        .flow-item {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 32px;
+        }
+        
+        .flow-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: #2563eb;
+            border-radius: 50%;
+        }
+        
+        .flow-label {
+            font-weight: 600;
+            color: #1a1a1a;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        
+        .flow-text {
+            font-size: 16px;
+            color: #4b5563;
+            line-height: 1.5;
+        }
+        
+        .product-cta {
+            display: inline-block;
+            padding: 16px 32px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .product-cta:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 500px;
+            background: #f3f4f6;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .image-placeholder {
+            text-align: center;
+            color: #9ca3af;
+        }
+        
+        .image-placeholder svg {
+            width: 80px;
+            height: 80px;
+            stroke: #d1d5db;
+            margin-bottom: 16px;
+        }
+        
+        /* Альтернативний порядок для парних рядків */
+        .product-row:nth-child(even) {
+            direction: rtl;
+        }
+        
+        .product-row:nth-child(even) > * {
+            direction: ltr;
+        }
+        
+        @media (max-width: 968px) {
+            .product-row {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .product-row:nth-child(even) {
+                direction: ltr;
+            }
+            
+            .product-info {
+                padding: 20px;
+            }
+            
+            .product-name {
+                font-size: 28px;
+            }
+            
+            .product-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Наші інструменти для автоматизації юридичної роботи</h2>
+                <p class="section-subtitle">Простi, ефективнi рішення, що економлять час та підвищують продуктивність</p>
+            </div>
+            
+            <div class="products-container">
+                <!-- Just Clicker -->
+                <div class="product-row">
+                    <div class="product-info">
+                        <div class="product-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor"/>
+                                <polyline points="10 17 15 12 10 7" stroke="currentColor"/>
+                                <line x1="15" y1="12" x2="3" y2="12" stroke="currentColor"/>
+                            </svg>
+                        </div>
+                        
+                        <h3 class="product-name">Just Clicker</h3>
+                        <p class="product-description">Автоматизація роботи з державними реєстрами</p>
+                        
+                        <div class="product-flow">
+                            <div class="flow-item">
+                                <div class="flow-label">Pain:</div>
+                                <div class="flow-text">Ви витрачаєте години на ручні дії в державних реєстрах</div>
+                            </div>
+                            
+                            <div class="flow-item">
+                                <div class="flow-label">Solution:</div>
+                                <div class="flow-text">Just Clicker автоматично виконує сотні кліків і повторюваних дій, можна створювати власні сценарії</div>
+                            </div>
+                            
+                            <div class="flow-item">
+                                <div class="flow-label">Result:</div>
+                                <div class="flow-text">Цілі дні роботи → кілька хвилин контролю</div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="product-cta">Детальніше про Just Clicker</a>
+                    </div>
+                    
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"/>
+                                <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
+                                <polyline points="21 15 16 10 5 21" stroke="currentColor"/>
+                            </svg>
+                            <p>Фото Just Clicker</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Just Calculator -->
+                <div class="product-row">
+                    <div class="product-info">
+                        <div class="product-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <rect x="4" y="2" width="16" height="20" rx="2" stroke="currentColor"/>
+                                <line x1="8" y1="6" x2="16" y2="6" stroke="currentColor"/>
+                                <line x1="8" y1="10" x2="16" y2="10" stroke="currentColor"/>
+                                <line x1="8" y1="14" x2="10" y2="14" stroke="currentColor"/>
+                                <line x1="14" y1="14" x2="16" y2="14" stroke="currentColor"/>
+                                <line x1="8" y1="18" x2="10" y2="18" stroke="currentColor"/>
+                                <line x1="14" y1="18" x2="16" y2="18" stroke="currentColor"/>
+                            </svg>
+                        </div>
+                        
+                        <h3 class="product-name">Just Calculator</h3>
+                        <p class="product-description">Калькулятор судових зборів з оплатою онлайн</p>
+                        
+                        <div class="product-flow">
+                            <div class="flow-item">
+                                <div class="flow-label">Pain:</div>
+                                <div class="flow-text">Розрахунок судових зборів займає час і може містити помилки</div>
+                            </div>
+                            
+                            <div class="flow-item">
+                                <div class="flow-label">Solution:</div>
+                                <div class="flow-text">Автоматичний калькулятор зборів з оплатою онлайн</div>
+                            </div>
+                            
+                            <div class="flow-item">
+                                <div class="flow-label">Result:</div>
+                                <div class="flow-text">Мінімум часу і помилок, все готово до оплати за хвилини</div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="product-cta">Детальніше про Just Calculator</a>
+                    </div>
+                    
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"/>
+                                <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
+                                <polyline points="21 15 16 10 5 21" stroke="currentColor"/>
+                            </svg>
+                            <p>Фото Just Calculator</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Just OCR -->
+                <div class="product-row">
+                    <div class="product-info">
+                        <div class="product-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor"/>
+                                <polyline points="14 2 14 8 20 8" stroke="currentColor"/>
+                                <line x1="9" y1="13" x2="15" y2="13" stroke="currentColor"/>
+                                <line x1="9" y1="17" x2="15" y2="17" stroke="currentColor"/>
+                            </svg>
+                        </div>
+                        
+                        <h3 class="product-name">Just OCR</h3>
+                        <p class="product-description">Розпізнавання та структуризація документів</p>
+                        
+                        <div class="product-flow">
+                            <div class="flow-item">
+                                <div class="flow-label">Pain:</div>
+                                <div class="flow-text">Ручне внесення інформації з документів забирає години</div>
+                            </div>
+                            
+                            <div class="flow-item">
+                                <div class="flow-label">Solution:</div>
+                                <div class="flow-text">Автоматичне сканування та структуризація даних з точністю 99,8%</div>
+                            </div>
+                            
+                            <div class="flow-item">
+                                <div class="flow-label">Result:</div>
+                                <div class="flow-text">Дані готові до використання відразу після сканування</div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="product-cta">Детальніше про Just OCR</a>
+                    </div>
+                    
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"/>
+                                <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
+                                <polyline points="21 15 16 10 5 21" stroke="currentColor"/>
+                            </svg>
+                            <p>Фото Just OCR</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Just Docs -->
+                <div class="product-row">
+                    <div class="product-info">
+                        <div class="product-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor"/>
+                                <polyline points="14 2 14 8 20 8" stroke="currentColor"/>
+                                <path d="M12 11v6" stroke="currentColor"/>
+                                <path d="M9 14h6" stroke="currentColor"/>
+                            </svg>
+                        </div>
+                        
+                        <h3 class="product-name">Just Docs</h3>
+                        <p class="product-description">Автоматичне генерування документів</p>
+                        
+                        <div class="product-flow">
+                            <div class="flow-item">
+                                <div class="flow-label">Pain:</div>
+                                <div class="flow-text">Ручне заповнення однотипних документів забирає багато часу</div>
+                            </div>
+                            
+                            <div class="flow-item">
+                                <div class="flow-label">Solution:</div>
+                                <div class="flow-text">Автоматичне генерування документів за шаблонами</div>
+                            </div>
+                            
+                            <div class="flow-item">
+                                <div class="flow-label">Result:</div>
+                                <div class="flow-text">90% економії часу, стандартні документи без помилок</div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="product-cta">Детальніше про Just Docs</a>
+                    </div>
+                    
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"/>
+                                <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
+                                <polyline points="21 15 16 10 5 21" stroke="currentColor"/>
+                            </svg>
+                            <p>Фото Just Docs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+<!-- Block 3 -->
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Solution - Pricing Block</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+        
+        .pricing-section {
+            padding: 80px 20px;
+            background: #ffffff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+        }
+        
+        .section-intro {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+            color: #4b5563;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+            align-items: stretch;
+        }
+        
+        .pricing-card {
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 40px 32px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .pricing-card.featured {
+            border-color: #2563eb;
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+        
+        .pricing-card.featured::before {
+            content: "Популярний";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2563eb;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+        
+        .pricing-icon {
+            width: 60px;
+            height: 60px;
+            background: #eff6ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+        
+        .pricing-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: #2563eb;
+            stroke-width: 2;
+        }
+        
+        .pricing-name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+        }
+        
+        .pricing-for {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .pricing-features {
+            text-align: left;
+            margin-bottom: 32px;
+            flex-grow: 1;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: #4b5563;
+            line-height: 1.5;
+        }
+        
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background: #dcfce7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .feature-icon svg {
+            width: 12px;
+            height: 12px;
+            stroke: #22c55e;
+            stroke-width: 3;
+        }
+        
+        .pricing-advantage {
+            font-size: 16px;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 32px;
+            padding: 16px;
+            background: #eff6ff;
+            border-radius: 8px;
+        }
+        
+        .pricing-cta {
+            display: block;
+            width: 100%;
+            padding: 16px 32px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: 2px solid #2563eb;
+            cursor: pointer;
+        }
+        
+        .pricing-cta:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .pricing-cta.secondary {
+            background: white;
+            color: #2563eb;
+        }
+        
+        .pricing-cta.secondary:hover {
+            background: #f9fafb;
+        }
+        
+        .section-outro {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            color: #4b5563;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        @media (max-width: 968px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto 48px;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .section-intro {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Плани та тарифи Just Solution</h2>
+            </div>
+            
+            <div class="section-intro">
+                У Just Solution ми віримо, що автоматизація юридичної рутини має бути доступною для кожної компанії — від приватного юриста до великої юридичної фірми. Наші тарифи розроблені так, щоб кожен міг знайти оптимальний варіант для себе та своєї команди.
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- Безкоштовний тариф -->
+                <div class="pricing-card">
+                    <div class="pricing-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    
+                    <h3 class="pricing-name">Безкоштовний</h3>
+                    <p class="pricing-for">Для юристів та невеликих команд, які хочуть спробувати базові функції</p>
+                    
+                    <div class="pricing-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <span>Доступ до одного базового інструменту</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <span>Обмежена кількість сценаріїв та запитів</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <span>Базова підтримка</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-advantage">
+                        Спробуйте автоматизацію без жодних витрат і переконайтеся, як просто можна економити час
+                    </div>
+                    
+                    <a href="#" class="pricing-cta secondary">Спробувати безкоштовно</a>
+                </div>
+                
+                <!-- Pro тариф -->
+                <div class="pricing-card featured">
+                    <div class="pricing-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    
+                    <h3 class="pricing-name">Pro</h3>
+                    <p class="pricing-for">Для юридичних фірм середнього розміру та активних користувачів</p>
+                    
+                    <div class="pricing-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <span>Повний доступ до всіх інструментів (Just Clicker, Just Calculator, Just OCR, Just Delivery)</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <span>Необмежена кількість сценаріїв</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <span>Пріоритетна підтримка</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-advantage">
+                        Максимальна ефективність для вашої команди, значна економія часу та ресурсів
+                    </div>
+                    
+                    <a href="#" class="pricing-cta">Спробувати Pro</a>
+                </div>
+                
+                <!-- Кастомний тариф -->
+                <div class="pricing-card">
+                    <div class="pricing-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M3 21h18M3 10h18M3 7l9-4 9 4M8 10v11M16 10v11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    
+                    <h3 class="pricing-name">Кастомний</h3>
+                    <p class="pricing-for">Для великих юридичних компаній та індивідуальних потреб</p>
+                    
+                    <div class="pricing-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <span>Індивідуальна автоматизація під специфіку вашого бізнесу</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <span>Персональний супровід</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 13l4 4L19 7" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <span>Інтеграції з іншими системами</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-advantage">
+                        Повна адаптація інструментів під ваші процеси та максимальна ефективність команди
+                    </div>
+                    
+                    <a href="#" class="pricing-cta secondary">Зв'язатися з нами</a>
+                </div>
+            </div>
+            
+            <div class="section-outro">
+                Оберіть тариф, що підходить саме вам, і почніть економити час вже сьогодні. Автоматизація рутинних завдань з Just Solution дозволяє вашим юристам зосередитися на стратегічних та важливих завданнях, поки наші інструменти виконують повторювані процеси швидко, точно та без помилок.
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+<!-- Block 4 -->
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Solution - FAQ Block</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+        
+        .faq-section {
+            padding: 80px 20px;
+            background: #f9fafb;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+        }
+        
+        .section-intro {
+            max-width: 700px;
+            margin: 0 auto 60px;
+            text-align: center;
+            color: #4b5563;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .faq-list {
+            margin-bottom: 60px;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+        
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 24px 32px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            color: #2563eb;
+        }
+        
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: #6b7280;
+            stroke-width: 2;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-icon svg {
+            stroke: #2563eb;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer-content {
+            padding: 0 32px 24px;
+            color: #4b5563;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        .faq-answer-content strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .cta-text {
+            font-size: 18px;
+            color: #4b5563;
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+        
+        .btn {
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+        }
+        
+        .btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .section-intro {
+                font-size: 16px;
+            }
+            
+            .faq-question {
+                padding: 20px;
+                font-size: 16px;
+            }
+            
+            .faq-answer-content {
+                padding: 0 20px 20px;
+                font-size: 15px;
+            }
+            
+            .faq-item.active .faq-answer {
+                max-height: 400px;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    const wasActive = item.classList.contains('active');
+                    
+                    // Close all items
+                    faqItems.forEach(faq => {
+                        faq.classList.remove('active');
+                    });
+                    
+                    // Toggle current item
+                    if (!wasActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Часті питання про Just Solution</h2>
+            </div>
+            
+            <div class="section-intro">
+                Ми знаємо, що при виборі інструментів для автоматизації юридичних процесів у вас можуть виникати запитання. Щоб зробити рішення простим і зрозумілим, ми зібрали відповіді на найпоширеніші питання наших користувачів.
+            </div>
+            
+            <div class="faq-list">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Для кого підходять ваші інструменти?</span>
+                        <span class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Just Solution створений для юридичних фірм будь-якого розміру, приватних юристів, нотаріусів та приватних виконавців. Наші інструменти допомагають економити час, знижувати ризик помилок та підвищувати ефективність команди.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Чи складно налаштувати інструменти?</span>
+                        <span class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Ні, все дуже просто. Інтуїтивний інтерфейс дозволяє швидко налаштувати сценарії автоматизації без потреби в технічних знаннях. Ви обираєте інструмент, створюєте сценарій, і він починає працювати.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Які інструменти входять у пакет?</span>
+                        <span class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            У нас є <strong>Just Clicker</strong>, <strong>Just Calculator</strong>, <strong>Just OCR</strong> та <strong>Just Docs та інші</strong>. Кожен інструмент можна використовувати окремо або комбінувати для комплексної автоматизації юридичних процесів.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Чи можна автоматизувати власні процеси?</span>
+                        <span class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Так. Ви можете створювати індивідуальні сценарії для будь-яких повторюваних завдань у вашій компанії, навіть якщо вони специфічні та унікальні. Just Solution підлаштовується під ваші потреби.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Як швидко можна почати користуватися інструментами?</span>
+                        <span class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Після реєстрації та налаштування сценаріїв ви можете запускати автоматизацію відразу. Весь процес налаштування займає лічені хвилини, а не години.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ 6 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Яка точність роботи інструментів?</span>
+                        <span class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Наші рішення працюють з точністю до <strong>99,8%</strong>, що дозволяє мінімізувати людські помилки та забезпечити якість автоматизованих процесів.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ 7 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Чи передбачена підтримка та допомога?</span>
+                        <span class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Так. У тарифах <strong>Pro</strong> та <strong>Кастомний</strong> передбачена пріоритетна підтримка. Ви завжди можете звернутися за консультацією та допомогою у налаштуванні інструментів, а наша команда оперативно відповість на всі питання.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <p class="cta-text">
+                    Якщо у вас залишилися питання або ви хочете детальніше дізнатися, як Just Solution може допомогти вашій компанії, натисніть кнопку нижче і спробуйте наші інструменти безкоштовно. Автоматизація юридичних процесів ще ніколи не була такою простою та ефективною!
+                </p>
+                <button class="btn">Спробувати безкоштовно</button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+<!-- Block 5 -->
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Solution - Contact Block</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+        
+        .contact-section {
+            padding: 80px 20px;
+            background: #f9fafb;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+        }
+        
+        .section-intro {
+            max-width: 600px;
+            margin: 0 auto 60px;
+            text-align: center;
+            color: #4b5563;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .section-intro strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .contact-form-wrapper {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-select {
+            cursor: pointer;
+        }
+        
+        .company-name-group {
+            display: none;
+            margin-top: 16px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .company-name-group.show {
+            display: block;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+        }
+        
+        .success-message {
+            display: none;
+            padding: 20px;
+            background: #dcfce7;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            color: #166534;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .contact-info {
+            padding: 40px;
+        }
+        
+        .info-block {
+            margin-bottom: 40px;
+        }
+        
+        .info-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+            color: #4b5563;
+        }
+        
+        .info-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eff6ff;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        
+        .info-icon svg {
+            width: 16px;
+            height: 16px;
+            stroke: #2563eb;
+            stroke-width: 2;
+        }
+        
+        .info-text {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .info-text a {
+            color: #2563eb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .info-text a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+        }
+        
+        .social-link {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eff6ff;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+        
+        .social-link svg {
+            width: 24px;
+            height: 24px;
+            stroke: #2563eb;
+            fill: none;
+            stroke-width: 2;
+        }
+        
+        .social-link:hover svg {
+            stroke: white;
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 300px;
+            background: #f3f4f6;
+            border-radius: 12px;
+            margin-top: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            border: 1px solid #e5e7eb;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 968px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .section-intro {
+                font-size: 16px;
+            }
+            
+            .contact-form-wrapper,
+            .contact-info {
+                padding: 24px;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const statusSelect = document.getElementById('status');
+            const companyGroup = document.getElementById('companyGroup');
+            const contactForm = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Show/hide company name field
+            statusSelect.addEventListener('change', function() {
+                if (this.value === 'company') {
+                    companyGroup.classList.add('show');
+                } else {
+                    companyGroup.classList.remove('show');
+                }
+            });
+            
+            // Form submission
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show success message
+                successMessage.classList.add('show');
+                
+                // Reset form
+                contactForm.reset();
+                companyGroup.classList.remove('show');
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 5000);
+            });
+        });
+    </script>
+</head>
+<body>
+    <section class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Зв'яжіться з нами</h2>
+                <p class="section-intro">
+                    Ми завжди готові відповісти на ваші запитання та показати, як <strong>Just Solution</strong> може зробити рутинні юридичні процеси швидшими та ефективнішими.<br><br>
+                    Заповніть форму нижче — і наша команда зв'яжеться з вами протягом 24 годин.
+                </p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-form-wrapper">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Ім'я та Прізвище</label>
+                            <input type="text" id="name" class="form-input" required placeholder="Введіть ваше ім'я та прізвище">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email</label>
+                            <input type="email" id="email" class="form-input" required placeholder="your@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Номер телефону</label>
+                            <input type="tel" id="phone" class="form-input" required placeholder="+380 XX XXX XX XX">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="status">Статус користувача</label>
+                            <select id="status" class="form-select" required>
+                                <option value="">Оберіть статус</option>
+                                <option value="individual">Приватна особа</option>
+                                <option value="company">Компанія</option>
+                            </select>
+                            
+                            <div id="companyGroup" class="company-name-group">
+                                <label class="form-label" for="companyName">Назва компанії</label>
+                                <input type="text" id="companyName" class="form-input" placeholder="Введіть назву компанії">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="message">Повідомлення / опис запиту</label>
+                            <textarea id="message" class="form-textarea" required placeholder="Розкажіть про ваші потреби в автоматизації юридичних процесів"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Відправити запит</button>
+                    </form>
+                    
+                    <div id="successMessage" class="success-message">
+                        Дякуємо! Ми отримали ваше повідомлення і зв'яжемося з вами протягом 24 годин.
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="info-block">
+                        <h3 class="info-title">Контакти компанії</h3>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor"/>
+                                    <polyline points="22,6 12,13 2,6" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="info-text">
+                                <a href="mailto:just.solution.co@gmail.com">just.solution.co@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="info-text">
+                                <a href="tel:+380989227949">+380 98 922 79 49</a>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor"/>
+                                    <circle cx="12" cy="10" r="3" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="info-text">
+                                вулиця Уласа Самчука, 24,<br>
+                                Львів, Львівська область, 79000
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor"/>
+                                <rect x="2" y="9" width="4" height="12" stroke="currentColor"/>
+                                <circle cx="4" cy="4" r="2" stroke="currentColor"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" title="Telegram">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M21 5L2 12.5l7 2.5m12-9.5L10 19l1.5-6.5m9.5-7.5L12.5 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="map-container">
+                        <p>Карта з розташуванням офісу</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
