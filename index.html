@@ -1,5 +1,4 @@
 <!-- Block 1 -->
-
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -44,6 +43,13 @@
         
         .hero-text {
             z-index: 2;
+        }
+        
+        .logo {
+            width: 180px;
+            height: auto;
+            margin-bottom: 32px;
+            animation: fadeInUp 0.6s ease-out;
         }
         
         .hero-headline {
@@ -173,70 +179,20 @@
         .visual-placeholder {
             width: 100%;
             height: 500px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            background: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
         }
         
-        .automation-demo {
-            width: 80%;
-            height: 80%;
-            background: #f9fafb;
-            border-radius: 8px;
-            padding: 24px;
-            position: relative;
-        }
-        
-        .demo-header {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        
-        .demo-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #e5e7eb;
-        }
-        
-        .demo-dot:first-child { background: #ef4444; }
-        .demo-dot:nth-child(2) { background: #f59e0b; }
-        .demo-dot:nth-child(3) { background: #10b981; }
-        
-        .demo-content {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .demo-line {
-            height: 8px;
-            background: #e5e7eb;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .demo-line::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            height: 100%;
+        .logo-display {
             width: 100%;
-            background: #2563eb;
-            animation: autoFill 3s ease-in-out infinite;
+            max-width: 400px;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
+            animation: float 6s ease-in-out infinite;
         }
-        
-        .demo-line:nth-child(2)::after { animation-delay: 0.5s; }
-        .demo-line:nth-child(3)::after { animation-delay: 1s; }
-        .demo-line:nth-child(4)::after { animation-delay: 1.5s; }
         
         @keyframes fadeInUp {
             from {
@@ -254,15 +210,23 @@
             to { opacity: 1; }
         }
         
-        @keyframes autoFill {
-            0%, 100% { left: -100%; }
-            50% { left: 0; }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
         }
         
         @media (max-width: 768px) {
             .hero-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
+            }
+            
+            .logo {
+                width: 150px;
             }
             
             .hero-headline {
@@ -285,6 +249,10 @@
             .visual-placeholder {
                 height: 300px;
             }
+            
+            .logo-display {
+                max-width: 280px;
+            }
         }
     </style>
 </head>
@@ -293,6 +261,8 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
+                    <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdPFuSAwP4AaboZvW8nv689C44CXW76ZrBEDRzLExoS4rQsgzbTz3uf_b78Rfu7xg1OUdxS5Nxl03nb1livGy4wMpl33Mr5LWd4fbQIhQo62m7FlYItcyk2is5P8SqNpqeCTb4?key=2YlQotXpmeo-BIG8yj0gSA" alt="Just Solution" class="logo">
+                    
                     <h1 class="hero-headline">
                         Автоматизуйте рутинну юридичну роботу за кілька кліків
                     </h1>
@@ -347,19 +317,7 @@
                 
                 <div class="hero-visual">
                     <div class="visual-placeholder">
-                        <div class="automation-demo">
-                            <div class="demo-header">
-                                <div class="demo-dot"></div>
-                                <div class="demo-dot"></div>
-                                <div class="demo-dot"></div>
-                            </div>
-                            <div class="demo-content">
-                                <div class="demo-line"></div>
-                                <div class="demo-line" style="width: 85%;"></div>
-                                <div class="demo-line" style="width: 70%;"></div>
-                                <div class="demo-line" style="width: 90%;"></div>
-                            </div>
-                        </div>
+                        <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdPFuSAwP4AaboZvW8nv689C44CXW76ZrBEDRzLExoS4rQsgzbTz3uf_b78Rfu7xg1OUdxS5Nxl03nb1livGy4wMpl33Mr5LWd4fbQIhQo62m7FlYItcyk2is5P8SqNpqeCTb4?key=2YlQotXpmeo-BIG8yj0gSA" alt="Just Solution" class="logo-display">
                     </div>
                 </div>
             </div>
