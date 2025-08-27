@@ -1672,6 +1672,12 @@
             box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
         }
         
+        .submit-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
         .success-message {
             display: none;
             padding: 20px;
@@ -1684,6 +1690,22 @@
         }
         
         .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .error-message {
+            display: none;
+            padding: 20px;
+            background: #fee2e2;
+            border: 1px solid #fecaca;
+            border-radius: 8px;
+            color: #991b1b;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .error-message.show {
             display: block;
             animation: fadeIn 0.5s ease;
         }
@@ -1782,14 +1804,16 @@
         .map-container {
             width: 100%;
             height: 300px;
-            background: #f3f4f6;
             border-radius: 12px;
             margin-top: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #9ca3af;
+            overflow: hidden;
             border: 1px solid #e5e7eb;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
         
         @keyframes fadeIn {
@@ -1829,6 +1853,8 @@
             const companyGroup = document.getElementById('companyGroup');
             const contactForm = document.getElementById('contactForm');
             const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const submitBtn = document.getElementById('submitBtn');
             
             // Show/hide company name field
             statusSelect.addEventListener('change', function() {
@@ -1840,23 +1866,74 @@
             });
             
             // Form submission
-            contactForm.addEventListener('submit', function(e) {
+            contactForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
-                // Show success message
-                successMessage.classList.add('show');
+                // Hide any previous messages
+                successMessage.classList.remove('show');
+                errorMessage.classList.remove('show');
                 
-                // Reset form
-                contactForm.reset();
-                companyGroup.classList.remove('show');
+                // Disable submit button
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Відправляємо...';
                 
-                // Scroll to success message
-                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Prepare form data
+                const formData = new FormData(contactForm);
                 
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    successMessage.classList.remove('show');
-                }, 5000);
+                // Build message content
+                let messageContent = formData.get('message');
+                messageContent += '\n\n---\n';
+                messageContent += 'Ім\'я: ' + formData.get('name') + '\n';
+                messageContent += 'Телефон: ' + formData.get('phone') + '\n';
+                messageContent += 'Статус: ' + (formData.get('status') === 'company' ? 'Компанія' : 'Приватна особа') + '\n';
+                
+                if (formData.get('status') === 'company' && formData.get('companyName')) {
+                    messageContent += 'Назва компанії: ' + formData.get('companyName') + '\n';
+                }
+                
+                // Update message in form data
+                formData.set('message', messageContent);
+                
+                try {
+                    const response = await fetch('https://formspree.io/f/myzdyred', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        // Show success message
+                        successMessage.classList.add('show');
+                        
+                        // Reset form
+                        contactForm.reset();
+                        companyGroup.classList.remove('show');
+                        
+                        // Scroll to success message
+                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Hide success message after 5 seconds
+                        setTimeout(() => {
+                            successMessage.classList.remove('show');
+                        }, 5000);
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (error) {
+                    // Show error message
+                    errorMessage.classList.add('show');
+                    
+                    // Hide error message after 5 seconds
+                    setTimeout(() => {
+                        errorMessage.classList.remove('show');
+                    }, 5000);
+                } finally {
+                    // Re-enable submit button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Відправити запит';
+                }
             });
         });
     </script>
@@ -1874,25 +1951,25 @@
             
             <div class="contact-content">
                 <div class="contact-form-wrapper">
-                    <form id="contactForm">
+                    <form id="contactForm" action="https://formspree.io/f/myzdyred" method="POST">
                         <div class="form-group">
                             <label class="form-label" for="name">Ім'я та Прізвище</label>
-                            <input type="text" id="name" class="form-input" required placeholder="Введіть ваше ім'я та прізвище">
+                            <input type="text" id="name" name="name" class="form-input" required placeholder="Введіть ваше ім'я та прізвище">
                         </div>
                         
                         <div class="form-group">
                             <label class="form-label" for="email">Email</label>
-                            <input type="email" id="email" class="form-input" required placeholder="your@email.com">
+                            <input type="email" id="email" name="email" class="form-input" required placeholder="your@email.com">
                         </div>
                         
                         <div class="form-group">
                             <label class="form-label" for="phone">Номер телефону</label>
-                            <input type="tel" id="phone" class="form-input" required placeholder="+380 XX XXX XX XX">
+                            <input type="tel" id="phone" name="phone" class="form-input" required placeholder="+380 XX XXX XX XX">
                         </div>
                         
                         <div class="form-group">
                             <label class="form-label" for="status">Статус користувача</label>
-                            <select id="status" class="form-select" required>
+                            <select id="status" name="status" class="form-select" required>
                                 <option value="">Оберіть статус</option>
                                 <option value="individual">Приватна особа</option>
                                 <option value="company">Компанія</option>
@@ -1900,20 +1977,24 @@
                             
                             <div id="companyGroup" class="company-name-group">
                                 <label class="form-label" for="companyName">Назва компанії</label>
-                                <input type="text" id="companyName" class="form-input" placeholder="Введіть назву компанії">
+                                <input type="text" id="companyName" name="companyName" class="form-input" placeholder="Введіть назву компанії">
                             </div>
                         </div>
                         
                         <div class="form-group">
                             <label class="form-label" for="message">Повідомлення / опис запиту</label>
-                            <textarea id="message" class="form-textarea" required placeholder="Розкажіть про ваші потреби в автоматизації юридичних процесів"></textarea>
+                            <textarea id="message" name="message" class="form-textarea" required placeholder="Розкажіть про ваші потреби в автоматизації юридичних процесів"></textarea>
                         </div>
                         
-                        <button type="submit" class="submit-btn">Відправити запит</button>
+                        <button type="submit" id="submitBtn" class="submit-btn">Відправити запит</button>
                     </form>
                     
                     <div id="successMessage" class="success-message">
                         Дякуємо! Ми отримали ваше повідомлення і зв'яжемося з вами протягом 24 годин.
+                    </div>
+                    
+                    <div id="errorMessage" class="error-message">
+                        Щось пішло не так. Будь ласка, спробуйте ще раз або зв'яжіться з нами напряму.
                     </div>
                 </div>
                 
@@ -1974,7 +2055,7 @@
                     </div>
                     
                     <div class="map-container">
-                        <p>Карта з розташуванням офісу</p>
+                        <iframe src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=Samchuka%20lviv+()&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
                     </div>
                 </div>
             </div>
