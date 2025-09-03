@@ -324,7 +324,6 @@
 </html>
 <!-- Block 2 -->
 
-
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -347,7 +346,7 @@
         
         .products-section {
             padding: 80px 20px;
-            background: #ffffff;
+            background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
         }
         
         .container {
@@ -357,49 +356,78 @@
         
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
         
         .section-title {
-            font-size: 42px;
+            font-size: 48px;
             font-weight: 700;
             color: #1a1a1a;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+            line-height: 1.1;
         }
         
         .section-subtitle {
-            font-size: 18px;
+            font-size: 20px;
             color: #6b7280;
             max-width: 600px;
             margin: 0 auto;
         }
         
-        .products-container {
-            display: flex;
-            flex-direction: column;
-            gap: 80px;
-        }
-        
-        .product-row {
+        .products-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
         }
         
-        .product-info {
-            padding: 40px;
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 48px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2563eb 0%, #7c3aed 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .product-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 32px;
         }
         
         .product-icon {
-            width: 60px;
-            height: 60px;
-            background: #eff6ff;
-            border-radius: 12px;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 24px;
+            flex-shrink: 0;
         }
         
         .product-icon svg {
@@ -409,17 +437,20 @@
             stroke-width: 2;
         }
         
+        .product-title-block {
+            flex: 1;
+        }
+        
         .product-name {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
             color: #1a1a1a;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
         }
         
         .product-description {
-            font-size: 18px;
+            font-size: 16px;
             color: #6b7280;
-            margin-bottom: 32px;
             line-height: 1.5;
         }
         
@@ -428,114 +459,162 @@
         }
         
         .flow-item {
-            margin-bottom: 20px;
-            position: relative;
-            padding-left: 32px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
         }
         
-        .flow-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10px;
-            width: 8px;
-            height: 8px;
-            background: #2563eb;
-            border-radius: 50%;
+        .flow-icon {
+            width: 40px;
+            height: 40px;
+            background: #f3f4f6;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .flow-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: #6b7280;
+        }
+        
+        .flow-content {
+            flex: 1;
         }
         
         .flow-label {
             font-weight: 600;
             color: #1a1a1a;
-            font-size: 16px;
+            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         
         .flow-text {
-            font-size: 16px;
+            font-size: 15px;
             color: #4b5563;
             line-height: 1.5;
         }
         
         .product-cta {
-            display: inline-block;
-            padding: 16px 32px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 24px;
             background: #2563eb;
             color: white;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 15px;
             transition: all 0.3s ease;
         }
         
         .product-cta:hover {
             background: #1d4ed8;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            gap: 12px;
         }
         
-        .product-image {
-            width: 100%;
-            height: 500px;
-            background: #f3f4f6;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        .product-cta svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
         }
         
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .product-cta:hover svg {
+            transform: translateX(2px);
         }
         
-        .image-placeholder {
-            text-align: center;
-            color: #9ca3af;
+        /* Особливі стилі для кожного продукту */
+        .product-card:nth-child(1) .product-icon {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
         }
         
-        .image-placeholder svg {
-            width: 80px;
-            height: 80px;
-            stroke: #d1d5db;
-            margin-bottom: 16px;
+        .product-card:nth-child(2) .product-icon {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
         }
         
-        /* Альтернативний порядок для парних рядків */
-        .product-row:nth-child(even) {
-            direction: rtl;
+        .product-card:nth-child(2) .product-icon svg {
+            stroke: #10b981;
         }
         
-        .product-row:nth-child(even) > * {
-            direction: ltr;
+        .product-card:nth-child(2) .product-cta {
+            background: #10b981;
+        }
+        
+        .product-card:nth-child(2) .product-cta:hover {
+            background: #059669;
+        }
+        
+        .product-card:nth-child(3) .product-icon {
+            background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
+        }
+        
+        .product-card:nth-child(3) .product-icon svg {
+            stroke: #f59e0b;
+        }
+        
+        .product-card:nth-child(3) .product-cta {
+            background: #f59e0b;
+        }
+        
+        .product-card:nth-child(3) .product-cta:hover {
+            background: #d97706;
+        }
+        
+        .product-card:nth-child(4) .product-icon {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+        }
+        
+        .product-card:nth-child(4) .product-icon svg {
+            stroke: #8b5cf6;
+        }
+        
+        .product-card:nth-child(4) .product-cta {
+            background: #8b5cf6;
+        }
+        
+        .product-card:nth-child(4) .product-cta:hover {
+            background: #7c3aed;
         }
         
         @media (max-width: 968px) {
-            .product-row {
+            .products-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 24px;
             }
             
-            .product-row:nth-child(even) {
-                direction: ltr;
+            .product-card {
+                padding: 32px 24px;
             }
             
-            .product-info {
-                padding: 20px;
+            .section-title {
+                font-size: 36px;
             }
             
             .product-name {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .section-title {
                 font-size: 28px;
             }
             
-            .product-image {
-                height: 300px;
+            .product-header {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .product-icon {
+                width: 56px;
+                height: 56px;
             }
         }
     </style>
@@ -545,13 +624,13 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Наші інструменти для автоматизації юридичної роботи</h2>
-                <p class="section-subtitle">Простi, ефективнi рішення, що економлять час та підвищують продуктивність</p>
+                <p class="section-subtitle">Прості, ефективні рішення, що економлять час та підвищують продуктивність</p>
             </div>
             
-            <div class="products-container">
+            <div class="products-grid">
                 <!-- Just Clicker -->
-                <div class="product-row">
-                    <div class="product-info">
+                <div class="product-card">
+                    <div class="product-header">
                         <div class="product-icon">
                             <svg viewBox="0 0 24 24" fill="none">
                                 <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor"/>
@@ -559,45 +638,61 @@
                                 <line x1="15" y1="12" x2="3" y2="12" stroke="currentColor"/>
                             </svg>
                         </div>
-                        
-                        <h3 class="product-name">Just Clicker</h3>
-                        <p class="product-description">Автоматизація роботи з державними реєстрами</p>
-                        
-                        <div class="product-flow">
-                            <div class="flow-item">
+                        <div class="product-title-block">
+                            <h3 class="product-name">Just Clicker</h3>
+                            <p class="product-description">Автоматизація роботи з державними реєстрами</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-flow">
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2v20M17 7l-5-5-5 5" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
                                 <div class="flow-label">Pain:</div>
                                 <div class="flow-text">Ви витрачаєте години на ручні дії в державних реєстрах</div>
                             </div>
-                            
-                            <div class="flow-item">
+                        </div>
+                        
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
                                 <div class="flow-label">Solution:</div>
                                 <div class="flow-text">Just Clicker автоматично виконує сотні кліків і повторюваних дій, можна створювати власні сценарії</div>
                             </div>
-                            
-                            <div class="flow-item">
+                        </div>
+                        
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M20 6L9 17l-5-5" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
                                 <div class="flow-label">Result:</div>
                                 <div class="flow-text">Цілі дні роботи → кілька хвилин контролю</div>
                             </div>
                         </div>
-                        
-                        <a href="#" class="product-cta">Детальніше про Just Clicker</a>
                     </div>
                     
-                    <div class="product-image">
-                        <div class="image-placeholder">
-                            <svg viewBox="0 0 24 24" fill="none">
-                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"/>
-                                <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
-                                <polyline points="21 15 16 10 5 21" stroke="currentColor"/>
-                            </svg>
-                            <p>Фото Just Clicker</p>
-                        </div>
-                    </div>
+                    <a href="#" class="product-cta">
+                        Детальніше про Just Clicker
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor"/>
+                        </svg>
+                    </a>
                 </div>
                 
                 <!-- Just Calculator -->
-                <div class="product-row">
-                    <div class="product-info">
+                <div class="product-card">
+                    <div class="product-header">
                         <div class="product-icon">
                             <svg viewBox="0 0 24 24" fill="none">
                                 <rect x="4" y="2" width="16" height="20" rx="2" stroke="currentColor"/>
@@ -609,45 +704,61 @@
                                 <line x1="14" y1="18" x2="16" y2="18" stroke="currentColor"/>
                             </svg>
                         </div>
-                        
-                        <h3 class="product-name">Just Calculator</h3>
-                        <p class="product-description">Калькулятор судових зборів з оплатою онлайн</p>
-                        
-                        <div class="product-flow">
-                            <div class="flow-item">
+                        <div class="product-title-block">
+                            <h3 class="product-name">Just Calculator</h3>
+                            <p class="product-description">Калькулятор судових зборів з оплатою онлайн</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-flow">
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2v20M17 7l-5-5-5 5" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
                                 <div class="flow-label">Pain:</div>
                                 <div class="flow-text">Розрахунок судових зборів займає час і може містити помилки</div>
                             </div>
-                            
-                            <div class="flow-item">
+                        </div>
+                        
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
                                 <div class="flow-label">Solution:</div>
                                 <div class="flow-text">Автоматичний калькулятор зборів з оплатою онлайн</div>
                             </div>
-                            
-                            <div class="flow-item">
+                        </div>
+                        
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M20 6L9 17l-5-5" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
                                 <div class="flow-label">Result:</div>
                                 <div class="flow-text">Мінімум часу і помилок, все готово до оплати за хвилини</div>
                             </div>
                         </div>
-                        
-                        <a href="#" class="product-cta">Детальніше про Just Calculator</a>
                     </div>
                     
-                    <div class="product-image">
-                        <div class="image-placeholder">
-                            <svg viewBox="0 0 24 24" fill="none">
-                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"/>
-                                <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
-                                <polyline points="21 15 16 10 5 21" stroke="currentColor"/>
-                            </svg>
-                            <p>Фото Just Calculator</p>
-                        </div>
-                    </div>
+                    <a href="#" class="product-cta">
+                        Детальніше про Just Calculator
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor"/>
+                        </svg>
+                    </a>
                 </div>
                 
                 <!-- Just OCR -->
-                <div class="product-row">
-                    <div class="product-info">
+                <div class="product-card">
+                    <div class="product-header">
                         <div class="product-icon">
                             <svg viewBox="0 0 24 24" fill="none">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor"/>
@@ -656,45 +767,61 @@
                                 <line x1="9" y1="17" x2="15" y2="17" stroke="currentColor"/>
                             </svg>
                         </div>
-                        
-                        <h3 class="product-name">Just OCR</h3>
-                        <p class="product-description">Розпізнавання та структуризація документів</p>
-                        
-                        <div class="product-flow">
-                            <div class="flow-item">
+                        <div class="product-title-block">
+                            <h3 class="product-name">Just OCR</h3>
+                            <p class="product-description">Розпізнавання та структуризація документів</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-flow">
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2v20M17 7l-5-5-5 5" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
                                 <div class="flow-label">Pain:</div>
                                 <div class="flow-text">Ручне внесення інформації з документів забирає години</div>
                             </div>
-                            
-                            <div class="flow-item">
+                        </div>
+                        
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
                                 <div class="flow-label">Solution:</div>
                                 <div class="flow-text">Автоматичне сканування та структуризація даних з точністю 99,8%</div>
                             </div>
-                            
-                            <div class="flow-item">
+                        </div>
+                        
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M20 6L9 17l-5-5" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
                                 <div class="flow-label">Result:</div>
                                 <div class="flow-text">Дані готові до використання відразу після сканування</div>
                             </div>
                         </div>
-                        
-                        <a href="#" class="product-cta">Детальніше про Just OCR</a>
                     </div>
                     
-                    <div class="product-image">
-                        <div class="image-placeholder">
-                            <svg viewBox="0 0 24 24" fill="none">
-                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"/>
-                                <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
-                                <polyline points="21 15 16 10 5 21" stroke="currentColor"/>
-                            </svg>
-                            <p>Фото Just OCR</p>
-                        </div>
-                    </div>
+                    <a href="#" class="product-cta">
+                        Детальніше про Just OCR
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor"/>
+                        </svg>
+                    </a>
                 </div>
                 
                 <!-- Just Docs -->
-                <div class="product-row">
-                    <div class="product-info">
+                <div class="product-card">
+                    <div class="product-header">
                         <div class="product-icon">
                             <svg viewBox="0 0 24 24" fill="none">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor"/>
@@ -703,40 +830,56 @@
                                 <path d="M9 14h6" stroke="currentColor"/>
                             </svg>
                         </div>
-                        
-                        <h3 class="product-name">Just Docs</h3>
-                        <p class="product-description">Автоматичне генерування документів</p>
-                        
-                        <div class="product-flow">
-                            <div class="flow-item">
+                        <div class="product-title-block">
+                            <h3 class="product-name">Just Docs</h3>
+                            <p class="product-description">Автоматичне генерування документів</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-flow">
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2v20M17 7l-5-5-5 5" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
                                 <div class="flow-label">Pain:</div>
                                 <div class="flow-text">Ручне заповнення однотипних документів забирає багато часу</div>
                             </div>
-                            
-                            <div class="flow-item">
+                        </div>
+                        
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
                                 <div class="flow-label">Solution:</div>
                                 <div class="flow-text">Автоматичне генерування документів за шаблонами</div>
                             </div>
-                            
-                            <div class="flow-item">
+                        </div>
+                        
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M20 6L9 17l-5-5" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
                                 <div class="flow-label">Result:</div>
                                 <div class="flow-text">90% економії часу, стандартні документи без помилок</div>
                             </div>
                         </div>
-                        
-                        <a href="#" class="product-cta">Детальніше про Just Docs</a>
                     </div>
                     
-                    <div class="product-image">
-                        <div class="image-placeholder">
-                            <svg viewBox="0 0 24 24" fill="none">
-                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"/>
-                                <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
-                                <polyline points="21 15 16 10 5 21" stroke="currentColor"/>
-                            </svg>
-                            <p>Фото Just Docs</p>
-                        </div>
-                    </div>
+                    <a href="#" class="product-cta">
+                        Детальніше про Just Docs
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
