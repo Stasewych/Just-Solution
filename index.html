@@ -1129,6 +1129,166 @@
             line-height: 1.8;
         }
         
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            padding: 40px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .modal-close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: #000;
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .form-input {
+            padding: 12px 16px;
+            font-size: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .form-submit {
+            padding: 16px 32px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 12px;
+        }
+        
+        .form-submit:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .form-submit:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .success-message {
+            display: none;
+            padding: 16px;
+            background: #dcfce7;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            color: #166534;
+            text-align: center;
+            margin-top: 16px;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .error-message {
+            display: none;
+            padding: 16px;
+            background: #fee2e2;
+            border: 1px solid #fecaca;
+            border-radius: 8px;
+            color: #991b1b;
+            text-align: center;
+            margin-top: 16px;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
         @media (max-width: 968px) {
             .pricing-grid {
                 grid-template-columns: 1fr;
@@ -1146,6 +1306,11 @@
             
             .section-intro {
                 font-size: 16px;
+            }
+            
+            .modal-content {
+                padding: 24px;
+                margin: 20px;
             }
         }
     </style>
@@ -1204,7 +1369,7 @@
                         Спробуйте автоматизацію без жодних витрат і переконайтеся, як просто можна економити час
                     </div>
                     
-                    <a href="https://calendly.com/just-Solution-co/30min" target="_blank" class="pricing-cta secondary">Спробувати безкоштовно</a>
+                    <button class="pricing-cta secondary" onclick="openModal('free')">Спробувати безкоштовно</button>
                 </div>
                 
                 <!-- Pro тариф -->
@@ -1249,7 +1414,7 @@
                         Максимальна ефективність для вашої команди, значна економія часу та ресурсів
                     </div>
                     
-                    <a href="https://calendly.com/just-Solution-co/30min" target="_blank" class="pricing-cta">Спробувати Pro</a>
+                    <button class="pricing-cta" onclick="openModal('pro')">Спробувати Pro</button>
                 </div>
                 
                 <!-- Кастомний тариф -->
@@ -1294,7 +1459,7 @@
                         Повна адаптація інструментів під ваші процеси та максимальна ефективність команди
                     </div>
                     
-                    <a href="https://calendly.com/just-Solution-co/30min" target="_blank" class="pricing-cta secondary">Зв'язатися з нами</a>
+                    <button class="pricing-cta secondary" onclick="openModal('custom')">Зв'язатися з нами</button>
                 </div>
             </div>
             
@@ -1303,6 +1468,126 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal -->
+    <div id="pricingModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h3 class="modal-title" id="modalTitle">Заповніть форму</h3>
+            <form id="pricingForm" class="modal-form" action="https://formspree.io/f/myzdyred" method="POST">
+                <input type="hidden" name="plan" id="planType">
+                <div class="form-group">
+                    <label class="form-label" for="name">Ім'я</label>
+                    <input type="text" id="name" name="name" class="form-input" required placeholder="Ваше ім'я">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Електронна пошта</label>
+                    <input type="email" id="email" name="email" class="form-input" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="phone">Номер телефону</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" required placeholder="+380 XX XXX XX XX">
+                </div>
+                <button type="submit" class="form-submit" id="submitBtn">Надіслати заявку</button>
+            </form>
+            <div id="successMessage" class="success-message">
+                Дякуємо! Ми отримали вашу заявку і зв'яжемося з вами найближчим часом.
+            </div>
+            <div id="errorMessage" class="error-message">
+                Щось пішло не так. Будь ласка, спробуйте ще раз.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentPlan = '';
+        
+        function openModal(plan) {
+            currentPlan = plan;
+            document.getElementById('pricingModal').classList.add('show');
+            document.getElementById('planType').value = plan;
+            
+            // Update modal title based on plan
+            const titles = {
+                'free': 'Спробувати безкоштовний план',
+                'pro': 'Оформити Pro план',
+                'custom': 'Замовити кастомний план'
+            };
+            document.getElementById('modalTitle').textContent = titles[plan] || 'Заповніть форму';
+        }
+        
+        function closeModal() {
+            document.getElementById('pricingModal').classList.remove('show');
+            document.getElementById('pricingForm').reset();
+            document.getElementById('successMessage').classList.remove('show');
+            document.getElementById('errorMessage').classList.remove('show');
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('pricingModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+        
+        // Form submission
+        document.getElementById('pricingForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Hide any previous messages
+            successMessage.classList.remove('show');
+            errorMessage.classList.remove('show');
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Відправляємо...';
+            
+            // Create FormData and append plan info to message
+            const formData = new FormData(e.target);
+            const planName = {
+                'free': 'Безкоштовний план',
+                'pro': 'Pro план',
+                'custom': 'Кастомний план'
+            }[currentPlan] || currentPlan;
+            
+            // Create message with plan info
+            const message = `Заявка на тариф: ${planName}\nІм'я: ${formData.get('name')}\nEmail: ${formData.get('email')}\nТелефон: ${formData.get('phone')}`;
+            formData.set('message', message);
+            
+            try {
+                const response = await fetch('https://formspree.io/f/myzdyred', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    successMessage.classList.add('show');
+                    e.target.reset();
+                    
+                    // Close modal after 3 seconds
+                    setTimeout(() => {
+                        closeModal();
+                    }, 3000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                errorMessage.classList.add('show');
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Надіслати заявку';
+            }
+        });
+    </script>
 </body>
 </html>
 <!-- Block 4 -->
