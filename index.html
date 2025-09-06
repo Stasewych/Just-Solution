@@ -581,6 +581,40 @@
             background: #7c3aed;
         }
         
+        /* Стилі для Just AI */
+        .product-card:nth-child(5) .product-icon {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        }
+        
+        .product-card:nth-child(5) .product-icon svg {
+            stroke: #ef4444;
+        }
+        
+        .product-card:nth-child(5) .product-cta {
+            background: #ef4444;
+        }
+        
+        .product-card:nth-child(5) .product-cta:hover {
+            background: #dc2626;
+        }
+        
+        /* Стилі для Just OS */
+        .product-card:nth-child(6) .product-icon {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .product-card:nth-child(6) .product-icon svg {
+            stroke: #0ea5e9;
+        }
+        
+        .product-card:nth-child(6) .product-cta {
+            background: #0ea5e9;
+        }
+        
+        .product-card:nth-child(6) .product-cta:hover {
+            background: #0284c7;
+        }
+        
         @media (max-width: 968px) {
             .products-grid {
                 grid-template-columns: 1fr;
@@ -874,6 +908,133 @@
                     
                     <a href="#" class="product-cta">
                         Детальніше про Just Docs
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Just AI -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <div class="product-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="3" stroke="currentColor"/>
+                                <path d="M12 1v6m0 6v6m0 2v2M1 12h6m6 0h6m2 0h2" stroke="currentColor"/>
+                                <path d="M4.22 4.22l4.24 4.24m7.08 7.08l4.24 4.24" stroke="currentColor"/>
+                                <path d="M19.78 4.22l-4.24 4.24m-7.08 7.08l-4.24 4.24" stroke="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="product-title-block">
+                            <h3 class="product-name">Just AI</h3>
+                            <p class="product-description">Штучний інтелект для правників</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-flow">
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2v20M17 7l-5-5-5 5" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
+                                <div class="flow-label">Біль:</div>
+                                <div class="flow-text">Пошук потрібних норм закону та складання текстів займає години</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
+                                <div class="flow-label">Рішення:</div>
+                                <div class="flow-text">Just AI аналізує документи, допомагає вам в спірних ситуаціях, генерує тексти позовів і заяв, підбирає норми права та дає рекомендації</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M20 6L9 17l-5-5" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
+                                <div class="flow-label">Результат:</div>
+                                <div class="flow-text">Складні юридичні завдання виконуються тепер за кілька хвилин, без помилок і зайвих витрат часу</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="product-cta">
+                        Детальніше про Just AI
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Just OS -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <div class="product-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"/>
+                                <rect x="7" y="7" width="3" height="3" stroke="currentColor"/>
+                                <rect x="14" y="7" width="3" height="3" stroke="currentColor"/>
+                                <rect x="7" y="14" width="3" height="3" stroke="currentColor"/>
+                                <rect x="14" y="14" width="3" height="3" stroke="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="product-title-block">
+                            <h3 class="product-name">Just OS</h3>
+                            <p class="product-description">Єдина операційна система для юристів</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-flow">
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2v20M17 7l-5-5-5 5" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
+                                <div class="flow-label">Біль:</div>
+                                <div class="flow-text">Інструменти які використовують правники розкидані по різних програмах та сервісах, важко працювати комплексно</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
+                                <div class="flow-label">Рішення:</div>
+                                <div class="flow-text">Just OS об'єднує всі необхідні для роботи рішення — в одній зручній платформі</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flow-item">
+                            <div class="flow-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M20 6L9 17l-5-5" stroke="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="flow-content">
+                                <div class="flow-label">Результат:</div>
+                                <div class="flow-text">Усі інструменти під рукою, робота стає цілісною та автоматизованою</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="product-cta">
+                        Детальніше про Just OS
                         <svg viewBox="0 0 24 24" fill="none">
                             <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor"/>
                         </svg>
