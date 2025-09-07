@@ -1,4 +1,5 @@
 <!-- Block 1 -->
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -178,6 +179,132 @@
             background: #f9fafb;
         }
         
+        /* Newsletter Form Styles */
+        .newsletter-section {
+            margin-top: 60px;
+            padding: 32px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 0.8s ease-out 1s;
+            animation-fill-mode: both;
+        }
+        
+        .newsletter-container {
+            max-width: 500px;
+        }
+        
+        .newsletter-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+        
+        .newsletter-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+        
+        .newsletter-description {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .email-input {
+            flex: 1;
+            padding: 14px 18px;
+            font-size: 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .email-input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .email-input::placeholder {
+            color: #9ca3af;
+        }
+        
+        .subscribe-btn {
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .subscribe-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+        
+        .subscribe-btn:active {
+            transform: translateY(0);
+        }
+        
+        .newsletter-privacy {
+            font-size: 14px;
+            color: #9ca3af;
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .newsletter-privacy svg {
+            width: 16px;
+            height: 16px;
+            stroke: #9ca3af;
+            flex-shrink: 0;
+        }
+        
+        .success-message {
+            display: none;
+            padding: 16px;
+            background: #ecfdf5;
+            border: 1px solid #6ee7b7;
+            border-radius: 8px;
+            color: #065f46;
+            font-weight: 500;
+            margin-top: 16px;
+            animation: fadeInUp 0.3s ease-out;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
         .hero-visual {
             position: relative;
             animation: fadeIn 1s ease-out 1s;
@@ -326,6 +453,23 @@
             .btn {
                 width: 100%;
             }
+            
+            .newsletter-section {
+                margin-top: 40px;
+                padding: 24px;
+            }
+            
+            .newsletter-title {
+                font-size: 20px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .subscribe-btn {
+                width: 100%;
+            }
         }
         
         @media (max-width: 480px) {
@@ -390,6 +534,51 @@
                         <a href="https://calendly.com/just-solution-co/30min" class="btn btn-primary" target="_blank">Замовити демо</a>
                     </div>
                     
+                    <!-- Newsletter Section -->
+                    <div class="newsletter-section">
+                        <div class="newsletter-container">
+                            <div class="newsletter-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <h3 class="newsletter-title">Будьте в курсі новинок</h3>
+                            <p class="newsletter-description">
+                                Отримуйте корисні поради з автоматизації юридичних процесів та перші дізнавайтесь про нові функції
+                            </p>
+                            
+                            <form 
+                                action="https://formspree.io/f/xvgbdrjz" 
+                                method="POST" 
+                                class="newsletter-form"
+                                id="newsletterForm"
+                            >
+                                <input 
+                                    type="email" 
+                                    name="email" 
+                                    class="email-input" 
+                                    placeholder="Ваша email адреса" 
+                                    required
+                                />
+                                <input type="hidden" name="message" value="Підписка на розсилку Just Solution">
+                                <button type="submit" class="subscribe-btn">
+                                    Підписатись
+                                </button>
+                            </form>
+                            
+                            <div class="newsletter-privacy">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                </svg>
+                                <span>Ваші дані в безпеці. Ніякого спаму, тільки корисна інформація.</span>
+                            </div>
+                            
+                            <div class="success-message" id="successMessage">
+                                ✓ Дякуємо за підписку!
+                            </div>
+                        </div>
+                    </div>
+                    
                     <!-- Декоративні елементи для мобільної версії (опціонально) -->
                     <div class="decorative-shapes">
                         <div class="shape shape-1"></div>
@@ -407,8 +596,45 @@
             </div>
         </div>
     </section>
+    
+    <script>
+        // Handle form submission
+        const form = document.getElementById('newsletterForm');
+        const successMessage = document.getElementById('successMessage');
+        
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    successMessage.classList.add('show');
+                    form.reset();
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.classList.remove('show');
+                    }, 5000);
+                } else {
+                    alert('Щось пішло не так. Спробуйте ще раз.');
+                }
+            } catch (error) {
+                alert('Помилка з\'єднання. Перевірте інтернет-підключення.');
+            }
+        });
+    </script>
 </body>
 </html>
+
 <!-- Block 2 -->
 <!DOCTYPE html>
 <html lang="uk">
