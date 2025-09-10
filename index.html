@@ -1,3 +1,110 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just Solution</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth; /* плавний скрол */
+    }
+
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 40px;
+      background-color: #0d1b2a;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #00d4ff;
+    }
+
+    /* мобільна версія */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #0d1b2a;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 10px;
+        border-radius: 8px;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+        margin-left: auto;
+      }
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul id="menu">
+      <li><a href="#home">Головна</a></li>
+      <li><a href="#products">Продукти</a></li>
+      <li><a href="#pricing">Ціни</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Контакти</a></li>
+      <li><a href="#privacy">Політика</a></li>
+    </ul>
+  </nav>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+</header>
+
+<!-- Тестові секції -->
+<section id="home" style="height:100vh; background:#e0e0e0;">Головна</section>
+<section id="products" style="height:100vh; background:#c0d6e4;">Продукти</section>
+<section id="pricing" style="height:100vh; background:#a4c8e1;">Ціни</section>
+<section id="faq" style="height:100vh; background:#7baed4;">FAQ</section>
+<section id="contact" style="height:100vh; background:#5c97c1;">Контакти</section>
+<section id="privacy" style="height:100vh; background:#3a6f91;">Політика</section>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('menu').classList.toggle('active');
+  }
+</script>
+
+</body>
+</html>
+
 <!-- Block 1 -->
 
 <!DOCTYPE html>
@@ -638,6 +745,7 @@
 <!-- Block 2 -->
 <!DOCTYPE html>
 <html lang="uk">
+<section id="products">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
