@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      scroll-behavior: smooth; /* плавний скрол */
+      scroll-behavior: smooth;
     }
 
     header {
@@ -42,41 +42,24 @@
       color: #00d4ff;
     }
 
-    /* мобільна версія */
-    @media (max-width: 768px) {
-      nav ul {
-        display: none;
-        flex-direction: column;
-        background-color: #0d1b2a;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        padding: 10px;
-        border-radius: 8px;
-      }
-
-      nav ul.active {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: block;
-        cursor: pointer;
-        font-size: 24px;
-        margin-left: auto;
-      }
+    section {
+      min-height: 100vh;
+      padding: 40px;
     }
 
-    .menu-toggle {
-      display: none;
-    }
+    #home { background: #e0e0e0; }
+    #products { background: #c0d6e4; }
+    #pricing { background: #a4c8e1; }
+    #faq { background: #7baed4; }
+    #contact { background: #5c97c1; }
+    #privacy { background: #3a6f91; }
   </style>
 </head>
 <body>
 
 <header>
   <nav>
-    <ul id="menu">
+    <ul>
       <li><a href="#home">Головна</a></li>
       <li><a href="#products">Продукти</a></li>
       <li><a href="#pricing">Ціни</a></li>
@@ -85,22 +68,14 @@
       <li><a href="#privacy">Політика</a></li>
     </ul>
   </nav>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 </header>
 
-<!-- Тестові секції -->
-<section id="home" style="height:100vh; background:#e0e0e0;">Головна</section>
-<section id="products" style="height:100vh; background:#c0d6e4;">Продукти</section>
-<section id="pricing" style="height:100vh; background:#a4c8e1;">Ціни</section>
-<section id="faq" style="height:100vh; background:#7baed4;">FAQ</section>
-<section id="contact" style="height:100vh; background:#5c97c1;">Контакти</section>
-<section id="privacy" style="height:100vh; background:#3a6f91;">Політика</section>
-
-<script>
-  function toggleMenu() {
-    document.getElementById('menu').classList.toggle('active');
-  }
-</script>
+<section id="home">Головна</section>
+<section id="products">Продукти</section>
+<section id="pricing">Ціни</section>
+<section id="faq">FAQ</section>
+<section id="contact">Контакти</section>
+<section id="privacy">Політика</section>
 
 </body>
 </html>
